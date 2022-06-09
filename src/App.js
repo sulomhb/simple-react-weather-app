@@ -1,11 +1,11 @@
 import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer"
-import Row from "./components/Row/Row";
+import Card from "./components/Card/Card";
 function App() {
   return (
     <div className="App">
        <Header/>
-       <Row/>
+       <Card/>
        <Footer/>
     </div>
   );
