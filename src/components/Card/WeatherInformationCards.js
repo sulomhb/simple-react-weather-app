@@ -15,7 +15,7 @@ function Card() {
     if (!weatherForecastResponse) {
       return null;
     }
-    
+
     return <div className="flex flex-row gap-2 justify-center items-center">{weatherForecastResponse.daily.map((dayIndex, index) => {
       return (
         <WeatherInformationCard key={index}

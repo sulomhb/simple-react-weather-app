@@ -1,4 +1,4 @@
-import { weatherAPIConfig } from "../weatherAPIConfig";
+import weatherAPIConfig from "../weatherAPIConfig";
 
 export const getLatitudeAndLongtitudeGivenCityName = async (cityName) => {
     let URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${weatherAPIConfig.key}`;
