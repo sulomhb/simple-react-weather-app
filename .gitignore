@@ -4,7 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-weatherAPIConfig.js
+src/weatherAPIConfig.js
 # testing
 /coverage
 
