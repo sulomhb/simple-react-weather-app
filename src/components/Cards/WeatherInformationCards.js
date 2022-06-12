@@ -46,7 +46,7 @@ function WeatherInformationCards() {
           <WeatherInformationCard
             temperature={firstDayDetails.temp.day}
             humidity={firstDayDetails.humidity}
-            windSpeed={firstDayDetails.windSpeed}
+            windSpeed={firstDayDetails.wind_speed}
             description={firstDayDetails.weather[0].main}
             weekDay={getWeekDayStringFromDayResponse(firstDayDetails.dt)}
           />
@@ -63,7 +63,7 @@ function WeatherInformationCards() {
                   key={index}
                   temperature={dayIndex.temp.day}
                   humidity={dayIndex.humidity}
-                  windSpeed={dayIndex.windSpeed}
+                  windSpeed={dayIndex.wind_speed}
                   description={dayIndex.weather[0].main}
                   weekDay={getWeekDayStringFromDayResponse(dayIndex.dt)}
                 />
