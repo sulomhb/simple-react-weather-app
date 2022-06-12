@@ -1,3 +1,17 @@
+# Simple Weather
+
+Retrieves a forecast based on a user's chosen location.
+
+Uses the OpenWeatherMap API, and the Tailwind CSS.
+
+Demonstrates an understanding of utilizing 3rd-party APIs and asynchronous patterns in JavaScript. Built with React.
+
+Weather icons from [Flaticon]: http://www.reddit.com
+
+
+Demo: https://simple-weather.herokuapp.com/
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
