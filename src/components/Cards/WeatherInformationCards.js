@@ -42,7 +42,7 @@ function WeatherInformationCards() {
     /* Create card for today's forecast, which is on top of the other days. */
     return (
       <>
-        <div className="flex justify-center items-center">
+        <div className="flex flew-row justify-center items-center mb-10">
           <WeatherInformationCard
             temperature={firstDayDetails.temp.day}
             humidity={firstDayDetails.humidity}
@@ -53,7 +53,7 @@ function WeatherInformationCards() {
         </div>
 
         {/* Row for other days card. The row has 6 columns with cards for the 6 next days.*/}
-        <div className="flex flex-row gap-2 justify-center items-center mt-5">
+        <div className="flex flex-row gap-1">
           {weatherForecastResponse.daily
             .slice(1, weatherForecastResponse.daily.length - 1)
             .map((dayIndex, index) => {
@@ -79,7 +79,7 @@ function WeatherInformationCards() {
   //////////////////////////////////////////////////////////// COMPONENT RETURNS ///////////////////////////////////////////////////////////////////
 
   return (
-    <div className="grid place-items-center m-10 bg-neutral-200 p-10 rounded">
+    <div className="grid place-items-center m-10 bg-white">
       <div name="input-field" className="justify-center flex">
         {/* Get city - input field */}
         <input
