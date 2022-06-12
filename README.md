@@ -2,7 +2,7 @@
 
 Retrieves a forecast based on a user's chosen location.
 
-Uses the OpenWeatherMap API, and the Tailwind CSS.
+Uses the OpenWeatherMap API, and Tailwind CSS.
 
 Demonstrates an understanding of utilizing 3rd-party APIs and asynchronous patterns in JavaScript. Built with React.
 
