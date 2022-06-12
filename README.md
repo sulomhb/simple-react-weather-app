@@ -6,7 +6,7 @@ Uses the OpenWeatherMap API, and the Tailwind CSS.
 
 Demonstrates an understanding of utilizing 3rd-party APIs and asynchronous patterns in JavaScript. Built with React.
 
-Weather icons from [Flaticon]:(https://www.flaticon.com/)
+Weather icons from [Flaticon](https://www.flaticon.com/)
 
 
 [Demo](https://simple-weather.herokuapp.com/)
