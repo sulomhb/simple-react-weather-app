@@ -78,33 +78,62 @@ function WeatherInformationCards() {
 
   //////////////////////////////////////////////////////////// COMPONENT RETURNS ///////////////////////////////////////////////////////////////////
 
-  return (
-    <div className="grid place-items-center m-10 bg-white">
-      <div name="input-field" className="justify-center flex">
+  if (!isError) {
+    return (
+      <div className="grid place-items-center m-10 bg-white">
+        <div name="input-field" className="justify-center flex">
+          {/* Get city - input field */}
+          <input
+            className="border-solid border-2 border-b-black mb-5 p-4 rounded"
+            onChange={(event) => setCityName(event.target.value)}
+            type="text"
+            placeholder="City..."
+          ></input>
+
+          {/* Get city weather - submit button */}
+
+          <button
+            type="submit"
+            className="bg-black text-slate-200 p-5 w-auto ml-2 rounded mb-5"
+            onClick={() => fetchWeatherData(cityName)}
+          >
+            Fetch
+          </button>
+        </div>
+
         {/* Get city - input field */}
-        <input
-          className="border-solid border-2 border-b-black mb-5 p-4 rounded"
-          onChange={(event) => setCityName(event.target.value)}
-          type="text"
-          placeholder="City..."
-        ></input>
-
-        {/* Get city weather - submit button */}
-
-        <button
-          type="submit"
-          className="bg-black text-slate-200 p-5 w-auto ml-2 rounded mb-5"
-          onClick={() => fetchWeatherData(cityName)}
-        >
-          Fetch
-        </button>
+        <div>{isLoading ? <LoadingSpinner /> : createCards()}</div>
       </div>
-
-      {/* Get city - input field */}
-      <div>{isLoading ? <LoadingSpinner /> : createCards()}</div>
-      <div>{isError ? "Failed to fetch weather data" : ""}</div>
-    </div>
-  );
+    );
+  } 
+  
+  else {
+      return (
+        <div className="grid place-items-center m-10 bg-white">
+          <div name="input-field" className="justify-center flex">
+            {/* Get city - input field */}
+            <input
+              className="border-solid border-2 border-b-black mb-5 p-4 rounded"
+              onChange={(event) => setCityName(event.target.value)}
+              type="text"
+              placeholder="City..."
+            ></input>
+  
+            {/* Get city weather - submit button */}
+  
+            <button
+              type="submit"
+              className="bg-black text-slate-200 p-5 w-auto ml-2 rounded mb-5"
+              onClick={() => fetchWeatherData(cityName)}
+            >
+              Fetch
+            </button>
+          </div>
+  
+          <div>Failed to get weather forecast.</div>
+        </div>
+      );
+    } 
 }
 
 export default WeatherInformationCards;
