@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fetchWeatherForecast } from "../api/weatherForecast";
+import { fetchWeatherDailyForecast } from "../api/weatherForecast";
 
 export default function useWeatherData() {
   const [isLoading, setIsLoading] = useState(false);
@@ -11,7 +11,7 @@ export default function useWeatherData() {
     setIsError(false);
 
     try {
-      setWeatherResponse(await fetchWeatherForecast(cityName));
+      setWeatherResponse(await fetchWeatherDailyForecast(cityName));
     } catch (error) {
       setIsError(true);
     } finally {

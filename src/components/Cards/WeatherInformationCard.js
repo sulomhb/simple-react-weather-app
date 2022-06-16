@@ -24,7 +24,7 @@ function WeatherInformationCard({
           alt=""
           width="100"
           height="auto"
-          className="fixed"
+          className="absolute"
         />
       </div>
 

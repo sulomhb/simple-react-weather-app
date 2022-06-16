@@ -1,7 +1,8 @@
 import { useState } from "react";
 import LoadingSpinner from "../Loading/LoadingSpinner";
-import useWeatherData from "../../hooks/useWeatherData";
+import useWeatherDataDailyForecast from "../../hooks/useWeatherDataDailyForecast";
 import WeatherInformationCard from "./WeatherInformationCard";
+import { getWeekDayStringFromDayResponse } from "../../api/weatherForecast";
 
 function WeatherInformationCards() {
   //////////////////////////////////////////////////////////// STATE ///////////////////////////////////////////////////////////////////
@@ -9,36 +10,18 @@ function WeatherInformationCards() {
   const [cityName, setCityName] = useState("");
   // Weather Response - Fetch is loading response - Could not get response - fetchWeatherData function
   const [weatherForecastResponse, isLoading, isError, fetchWeatherData] =
-    useWeatherData();
+    useWeatherDataDailyForecast();
 
   //////////////////////////////////////////////////////////// STATE - END ///////////////////////////////////////////////////////////////////
 
   //////////////////////////////////////////////////////////// FUNCTIONS ///////////////////////////////////////////////////////////////////
 
-  const getWeekDayStringFromDayResponse = (dt) => {
-    const weekday = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-
-    let unixEpochToday = new Date(dt * 1000).getUTCDay(); // Returns the number of the weekday, e.g:  6 = Saturday.
-    const todayIsWeekDay = weekday[unixEpochToday]; // The weekday string we get from weekday array.
-    return todayIsWeekDay;
-  };
-
   // Create card with forecast for each day
-  const createCards = () => {
+  const createCardsForEachDay = () => {
     if (!weatherForecastResponse) {
       return null; // Do not create cards if there is no response.
     }
-
     const firstDayDetails = weatherForecastResponse.daily[0]; // Response for the first day.
-
     /* Create card for today's forecast, which is on top of the other days. */
     return (
       <>
@@ -76,9 +59,37 @@ function WeatherInformationCards() {
 
   //////////////////////////////////////////////////////////// FUNCTIONS-END ///////////////////////////////////////////////////////////////////
 
-  //////////////////////////////////////////////////////////// COMPONENT RETURNS ///////////////////////////////////////////////////////////////////
-
   if (!isError) {
+    //////////////////////////////////////////////////////////// COMPONENT RETURNS IF FETCH IS SUCCESSFUL ///////////////////////////////////////////////////////////////////
+
+    return (
+      <div className="grid place-items-center m-10 bg-white">
+        <div name="input-field" className="justify-center flex">
+          {/* Get city - input field */}
+          <input
+            className="border-solid border-2 border-b-black mb-5 p-4 rounded"
+            onChange={(event) => setCityName(event.target.value)}
+            type="text"
+            placeholder="City..."
+          ></input>
+
+          {/* Get city weather - submit button */}
+
+          <button
+            type="submit"
+            className="bg-black text-slate-200 p-5 w-auto ml-2 rounded mb-5"
+            onClick={() => fetchWeatherData(cityName)}
+          >
+            Fetch
+          </button>
+        </div>
+        {/* Get city - input field */}
+        <div>{isLoading ? <LoadingSpinner /> : createCardsForEachDay()}</div>
+      </div>
+    );
+    //////////////////////////////////////////////////////////// COMPONENT RETURNS END ///////////////////////////////////////////////////////////////////
+  } else {
+    //////////////////////////////////////////////////////////// COMPONENT RETURNS IF FETCH IS UNSUCCESSFUL ///////////////////////////////////////////////////////////////////
     return (
       <div className="grid place-items-center m-10 bg-white">
         <div name="input-field" className="justify-center flex">
@@ -101,39 +112,11 @@ function WeatherInformationCards() {
           </button>
         </div>
 
-        {/* Get city - input field */}
-        <div>{isLoading ? <LoadingSpinner /> : createCards()}</div>
+        <div>Failed to get weather forecast.</div>
       </div>
     );
-  } 
-  
-  else {
-      return (
-        <div className="grid place-items-center m-10 bg-white">
-          <div name="input-field" className="justify-center flex">
-            {/* Get city - input field */}
-            <input
-              className="border-solid border-2 border-b-black mb-5 p-4 rounded"
-              onChange={(event) => setCityName(event.target.value)}
-              type="text"
-              placeholder="City..."
-            ></input>
-  
-            {/* Get city weather - submit button */}
-  
-            <button
-              type="submit"
-              className="bg-black text-slate-200 p-5 w-auto ml-2 rounded mb-5"
-              onClick={() => fetchWeatherData(cityName)}
-            >
-              Fetch
-            </button>
-          </div>
-  
-          <div>Failed to get weather forecast.</div>
-        </div>
-      );
-    } 
+    //////////////////////////////////////////////////////////// COMPONENT RETURNS ///////////////////////////////////////////////////////////////////
+  }
 }
 
 export default WeatherInformationCards;

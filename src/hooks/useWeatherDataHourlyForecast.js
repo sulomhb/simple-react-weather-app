@@ -1,0 +1,32 @@
+import { useState } from "react";
+import { fetchWeatherHourlyForecast } from "../api/weatherForecast";
+
+export default function useWeatherData() {
+
+    //////////////////////////////////////////////////////////// STATE ///////////////////////////////////////////////////////////////////
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [weatherResponse, setWeatherResponse] = useState(undefined);
+
+  //////////////////////////////////////////////////////////// STATE - END ///////////////////////////////////////////////////////////////////
+  
+  //////////////////////////////////////////////////////////// FUNCTIONS ///////////////////////////////////////////////////////////////////
+
+  const fetchData = async (cityName) => {
+
+    setIsLoading(true);
+    setIsError(false);
+
+    try {
+      setWeatherResponse(await fetchWeatherHourlyForecast(cityName));
+    } catch (error) {
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return [weatherResponse, isLoading, isError, fetchData];
+}
+
+  //////////////////////////////////////////////////////////// FUNCTIONS-END //////////////////////////////////////////////////////////////////
