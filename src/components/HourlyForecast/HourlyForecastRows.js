@@ -11,6 +11,10 @@ export default function HourlyForecastRow({ cityName }) {
   const [weatherResponse, isLoading, isError, fetchData] =
     useWeatherDataHourlyForecast();
 
+  //////////////////////////////////////////////////////////// STATE END ///////////////////////////////////////////////////////////////////
+
+  //////////////////////////////////////////////////////////// FUNCTIONS ///////////////////////////////////////////////////////////////////
+
   const createRowWithForecast = () => {
     if (!weatherResponse) {
       return null;
@@ -18,30 +22,34 @@ export default function HourlyForecastRow({ cityName }) {
 
     return weatherResponse.hourly.map((hourIndex, index) => {
       return (
-        <tr>
-          <td key = {index} className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+        <tr key={index}>
+          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
             {getWeekDayStringFromDayResponse(hourIndex.dt) + " "}
           </td>
 
-          <td key = {index} className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
             {getHourFromResponse(hourIndex.dt) + ":00"}
           </td>
-          <td key = {index} className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
             {hourIndex.temp}°C
           </td>
-          <td key = {index} className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
             {hourIndex.weather[0].main}
           </td>
-          <td key = {index} className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
             {hourIndex.humidity}%
           </td>
-          <td key = {index} className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
             {hourIndex.wind_speed} m/s
           </td>
         </tr>
       );
     });
   };
+
+  //////////////////////////////////////////////////////////// FUNCTIONS END ///////////////////////////////////////////////////////////////////
+
+  //////////////////////////////////////////////////////////// COMPONENT RETURNS ///////////////////////////////////////////////////////////////////
 
   if (!isError) {
     return (
@@ -65,7 +73,7 @@ export default function HourlyForecastRow({ cityName }) {
                       >
                         Day
                       </th>
-                        <th
+                      <th
                         scope="col"
                         className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                       >
@@ -109,4 +117,5 @@ export default function HourlyForecastRow({ cityName }) {
       </div>
     );
   }
+  //////////////////////////////////////////////////////////// COMPONENT RETURNS END ///////////////////////////////////////////////////////////////////
 }

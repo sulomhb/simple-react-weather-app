@@ -8,8 +8,8 @@ function App() {
     <div className="App">
       <Header />
       <WeatherInformationCards />
-      <Footer />
       <HourlyForecastRow cityName={'Skien'} />
+      <Footer />
     </div>
   );
 }
