@@ -6,7 +6,7 @@ import { getWeekDayStringFromDayResponse } from "../../api/weatherForecast";
 
 function WeatherInformationCards() {
   //////////////////////////////////////////////////////////// STATE ///////////////////////////////////////////////////////////////////
-  // City name is from user input
+  // City name is from user input 
   const [cityName, setCityName] = useState("");
   // Weather Response - Fetch is loading response - Could not get response - fetchWeatherData function
   const [weatherForecastResponse, isLoading, isError, fetchWeatherData] =
