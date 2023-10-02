@@ -9,7 +9,7 @@ Demonstrates an understanding of utilizing 3rd-party APIs and asynchronous patte
 Weather icons from [Flaticon](https://www.flaticon.com/)
 
 
-[Demo](https://simple-weather.herokuapp.com/)
+[Demo](https://simple-react-weather-app.vercel.app/)
 
 
 # Getting Started with Create React App
