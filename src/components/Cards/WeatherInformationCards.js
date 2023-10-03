@@ -70,6 +70,8 @@ function WeatherInformationCards() {
             className="border-solid border-2 border-b-black mb-5 p-4 rounded"
             onChange={(event) => setCityName(event.target.value)}
             type="number"
+            pattern="[0-9]*" 
+            inputmode="numeric"
             placeholder="City..."
           ></input>
 
