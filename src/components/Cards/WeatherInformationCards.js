@@ -69,7 +69,7 @@ function WeatherInformationCards() {
           <input
             className="border-solid border-2 border-b-black mb-5 p-4 rounded"
             onChange={(event) => setCityName(event.target.value)}
-            type="text"
+            type="number"
             placeholder="City..."
           ></input>
 
